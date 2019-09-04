@@ -25,6 +25,6 @@
 18. [Правила работы с заявками по входящим звонкам](https://youtu.be/XGzB_ryb7U0)
 19. [Правила работы по заявкам с сайта и с Клиентами в офисе](https://youtu.be/UlrOCyVwZAc)
 
-#### Списик онлайн тестов:
+#### Список онлайн тестов:
 1. [Теоритический тест по работе с AmoCrm](https://forms.gle/qv2ZCYGa2jmPCBVa6)
 2. [Практический тест по работе с AmoCrm](https://forms.gle/QDKngcXMnCQptetM7)
