@@ -104,7 +104,8 @@
                     <h3><strong>Двухстворчатое<br> окно</strong></h3>
                     <h4><strong>от 4 200</strong><img src="images/rub_w.png" alt="" title=""></h4>
                     <img src="images/calc_f1.png" alt="" title="">
-                    <form method="POST">
+                    <form method="POST" id="calc_f1" action="javascript:void(null);" onsubmit="calc_f1()" class="feedform3 ie">
+                        <div class="utm"></div>
                         <input type="hidden" name="form_id" value="calc_1"/>
                         <input type="hidden" name="catchpoint" value="Двухстворчатое окно">
                         <label>Высота, мм</label>
@@ -152,8 +153,9 @@
                     <h3><strong>трехстворчатое<br>окно</strong></h3>
                     <h4><strong>от 5 900</strong><img src="images/rub_w.png" alt="" title=""></h4>
                     <img src="images/calc_f2.png" alt="" title="">
-                    <form method="POST" action="" class="feedform3 ie">
+                    <form method="POST" id="calc_f2" action="javascript:void(null);" onsubmit="calc_f2()" class="feedform3 ie">
                         <!-- Скрытые поля, которые содержат данные из UTM метки -->
+                        <div class="utm"></div>
                         <input type="hidden" name="form_id" value="3"/>
                         <input type="hidden" name="catchpoint" value="Трехстворчатое окно">
                         <label>Высота, мм</label>
@@ -201,8 +203,9 @@
                     <h3><strong>Балконный<br>блок</strong></h3>
                     <h4><strong>от 7 300</strong><img src="images/rub_w.png" alt="" title=""></h4>
                     <img src="images/calc_f3.png" alt="" title="">
-                    <form method="POST">
+                    <form method="POST" id="calc_f3" action="javascript:void(null);" onsubmit="calc_f3()">
                         <!-- Скрытые поля, которые содержат данные из UTM метки -->
+                        <div class="utm"></div>
                         <input type="hidden" name="form_id" value="4"/>
                         <input type="hidden" name="catchpoint" value="Балконный блок">
                         <label>Высота, мм</label>
@@ -266,7 +269,8 @@
     <div class="form_content">
         <a class="close"></a>
         <h3 class="black_f">заказать<br>обратный звонок</h3>
-        <form method="POST">
+        <form method="POST" id="call" action="javascript:void(null);" onsubmit="call()">
+            <div class="utm"></div>
             <input type="hidden" name="form_id" value="6"/>
             <input type="hidden" name="Заказ обратного звонка">
             <p class="medium">Введите Ваше имя*</p>
@@ -281,5 +285,75 @@
     </div>
 </div>
 <div class="over"></div>
+<script type="text/javascript">
+    var date = new Date;
+    date.setHours(date.getHours() + 3);
+    date = date.toUTCString();
+
+    var urlCurrent = decodeURI(window.location.href);
+    var newStr = urlCurrent.replace('http://yadro/?','');
+    var arrStr = newStr.split('&');
+    for (var i = 0; i < arrStr.length; i++) {
+
+        utmParam = arrStr[i].split('=');
+        if(getCookie(utmParam[0]) != ''){
+            utmParam[1] = getCookie(utmParam[0]);
+        } else {
+            document.cookie = arrStr[i] + '; expires='+ date;
+        }
+
+        $('.utm').append('<input name="'+utmParam[0]+'" type="hidden" value="'+utmParam[1]+'" />');
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return '';
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    function call() {
+        var msg   = $('#call').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'https://webhook.site/fcdd902b-df0c-4239-8da0-e9bc44e4ace3',
+            data: msg,
+        });
+    }
+    function calc_f1() {
+        var msg   = $('#calc_f1').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'https://webhook.site/fcdd902b-df0c-4239-8da0-e9bc44e4ace3',
+            data: msg,
+        });
+    }
+    function calc_f2() {
+        var msg   = $('#calc_f2').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'https://webhook.site/fcdd902b-df0c-4239-8da0-e9bc44e4ace3',
+            data: msg,
+        });
+    }
+    function calc_f3() {
+        var msg   = $('#calc_f3').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'https://webhook.site/fcdd902b-df0c-4239-8da0-e9bc44e4ace3',
+            data: msg,
+        });
+    }
+</script>
 </body>
 </html>
